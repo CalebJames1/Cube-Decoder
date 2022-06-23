@@ -1,0 +1,76 @@
+.whiteSide,#piece5{
+    background-color: white;
+    left: 160px;
+    top: 10px;
+}
+
+.orangeSide,#piece14{
+    top: 160px;
+    background-color: orange;
+    left: 10px;
+}
+
+.greenSide,#piece23{
+    top: 160px;
+    background-color: green;
+    left: 160px;
+}
+
+.redSide,#piece32{
+    top: 160px;
+    background-color: red;
+    left: 313px;
+}
+
+.blueSide,#piece41{
+    top: 160px;
+    background-color: blue;
+    left: 460px;
+}
+
+.yellowSide,#piece50{
+    top: 313px;
+    background-color: yellow;
+    left: 160px;
+}
+.piece{
+    border: solid 2px black;
+    background-color: gray;
+}
+
+.side{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    border: solid 4px black;
+}
+
+.cubeInput{
+    position: absolute;
+    top: 480px;
+}
+
+.cubeText{
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    position: absolute;
+    left: 100px;
+    height: 150px;
+    width: 150px;
+}
+
+.functionButtons{
+    position: absolute;
+    top: 200px;
+    left: 120px;
+}
+
+#piece5,#piece14,#piece23,#piece32,#piece41,#piece50{
+    border: solid 2px black;
+}
+
+.textBox{
+    padding: 0px 15px;
+}

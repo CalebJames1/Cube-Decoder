@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rubik's Cube Solver</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <section class="cube">
+        <div class="whiteSide side">
+            <div class="piece" id="piece1"></div>
+            <div class="piece" id="piece2"></div>
+            <div class="piece" id="piece3"></div>
+            <div class="piece" id="piece4"></div>
+            <div class="centerPiece" id="piece5"></div>
+            <div class="piece" id="piece6"></div>
+            <div class="piece" id="piece7"></div>
+            <div class="piece" id="piece8"></div>
+            <div class="piece" id="piece9"></div>
+        </div>
+        <div class="orangeSide side">
+            <div class="piece" id="piece10"></div>
+            <div class="piece" id="piece11"></div>
+            <div class="piece" id="piece12"></div>
+            <div class="piece" id="piece13"></div>
+            <div class="centerPiece" id="piece14"></div>
+            <div class="piece" id="piece15"></div>
+            <div class="piece" id="piece16"></div>
+            <div class="piece" id="piece17"></div>
+            <div class="piece" id="piece18"></div>
+        </div>
+        <div class="greenSide side">
+            <div class="piece" id="piece19"></div>
+            <div class="piece" id="piece20"></div>
+            <div class="piece" id="piece21"></div>
+            <div class="piece" id="piece22"></div>
+            <div class="centerPiece" id="piece23"></div>
+            <div class="piece" id="piece24"></div>
+            <div class="piece" id="piece25"></div>
+            <div class="piece" id="piece26"></div>
+            <div class="piece" id="piece27"></div>
+        </div>
+        <div class="redSide side">
+            <div class="piece" id="piece28"></div>
+            <div class="piece" id="piece29"></div>
+            <div class="piece" id="piece30"></div>
+            <div class="piece" id="piece31"></div>
+            <div class="centerPiece" id="piece32"></div>
+            <div class="piece" id="piece33"></div>
+            <div class="piece" id="piece34"></div>
+            <div class="piece" id="piece35"></div>
+            <div class="piece" id="piece36"></div>
+        </div>
+        <div class="blueSide side">
+            <div class="piece" id="piece37"></div>
+            <div class="piece" id="piece38"></div>
+            <div class="piece" id="piece39"></div>
+            <div class="piece" id="piece40"></div>
+            <div class="centerPiece" id="piece41"></div>
+            <div class="piece" id="piece42"></div>
+            <div class="piece" id="piece43"></div>
+            <div class="piece" id="piece44"></div>
+            <div class="piece" id="piece45"></div>
+        </div>
+        <div class="yellowSide side">
+            <div class="piece" id="piece46"></div>
+            <div class="piece" id="piece47"></div>
+            <div class="piece" id="piece48"></div>
+            <div class="piece" id="piece49"></div>
+            <div class="centerPiece" id="piece50"></div>
+            <div class="piece" id="piece51"></div>
+            <div class="piece" id="piece52"></div>
+            <div class="piece" id="piece53"></div>
+            <div class="piece" id="piece54"></div>
+        </div>
+    </section>
+    <section class="cubeInput">
+        <div class="cubeButtons">
+            <input type="radio" name="cubeSide" id="white" value="white">
+            <label for="white">White</label>
+            <input type="radio" name="cubeSide" id="orange" value="orange">
+            <label for="orange">Orange</label>
+            <input type="radio" name="cubeSide" id="green" value="green">
+            <label for="green">Green</label>
+            <input type="radio" name="cubeSide" id="red" value="red">
+            <label for="red">Red</label>
+            <input type="radio" name="cubeSide" id="blue" value="blue">
+            <label for="blue">Blue</label>
+            <input type="radio" name="cubeSide" id="yellow" value="yellow">
+            <label for="yellow">Yellow</label>
+        </div>
+        <div class="cubeText">
+            <input type="text" id="1" maxlength="1" class="textBox">
+            <input type="text" id="2" maxlength="1" class="textBox">
+            <input type="text" id="3" maxlength="1" class="textBox">
+            <input type="text" id="4" maxlength="1" class="textBox">
+            <input type="text" id="5" readonly class="textBox" value="w">
+            <input type="text" id="6" maxlength="1" class="textBox">
+            <input type="text" id="7" maxlength="1" class="textBox">
+            <input type="text" id="8" maxlength="1" class="textBox">
+            <input type="text" id="9" maxlength="1" class="textBox">
+        </div>
+        <div class="functionButtons">
+            <button type="button" id="solveButton">Solve</button>
+            <button type="button" id="clearButton">Clear</button>
+        </div>
+    </section>
+<script src="cube.js"></script>
+</body>
+</html>
