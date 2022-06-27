@@ -108,3 +108,71 @@ clearButton.onclick = (e) => {
     }
 }
 
+
+let outputField = document.getElementById('outputField');
+let solveButton = document.getElementById('solveButton');
+const userAction = async () => {
+    let white = '';
+    for(let i = 1; i <= 9; i++){
+        if(i === 5){
+            white += 'w';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            white += currentPiece.style.backgroundColor[0];
+        }
+    }
+    let orange = '';
+    for(let i = 10; i <= 18; i++){
+        if(i === 14){
+            orange += 'o';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            orange += currentPiece.style.backgroundColor[0];
+        }
+    }
+    let green = '';
+    for(let i = 19; i <= 27; i++){
+        if(i === 23){
+            green += 'g';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            green += currentPiece.style.backgroundColor[0];
+        }
+    }
+    let red = '';
+    for(let i = 28; i <= 36; i++){
+        if(i === 32){
+            red += 'r';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            red += currentPiece.style.backgroundColor[0];
+        }
+    }
+    let blue = '';
+    for(let i = 37; i <= 45; i++){
+        if(i === 41){
+            blue += 'b';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            blue += currentPiece.style.backgroundColor[0];
+        }
+    }
+    let yellow = '';
+    for(let i = 46; i <= 54; i++){
+        if(i === 50){
+            yellow += 'y';
+        }else {
+            let currentPiece = document.getElementById(`piece${i}`);
+            yellow += currentPiece.style.backgroundColor[0];
+        }
+    }
+  const response = await fetch(`https://e4d9ik0jg4.execute-api.us-west-2.amazonaws.com/test/cubesolver?white=${white}&orange=${orange}&green=${green}&red=${red}&blue=${blue}&yellow=${yellow}`);
+  const myJson = await response.json(); //extract JSON from the http response
+    if(myJson['error']){
+        outputField.innerText = myJson['error'];
+    }else {
+        outputField.innerText = myJson['cross'] + myJson['corners'] + myJson['second layer'] + myJson['last layer'];
+    }
+}
+solveButton.addEventListener('click', userAction);
+
