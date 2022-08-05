@@ -11,10 +11,12 @@ let cText = document.getElementById('5');
 let e = document.getElementById('piece1');
 const radios = document.querySelectorAll('.cubeButtons');
 let multiplier = 0;
+let outputPresent = false;
 for(const radio of radios){
     radio.addEventListener('change', function(event){
         let selectedColor = document.querySelector('input[name="cubeSide"]:checked').value;
         radioHelper(selectedColor);
+        ulText.focus();
     });
 }
 
@@ -47,17 +49,17 @@ function colorConverter(color){
     if(color === 'rgb(128, 128, 128)'){
         return '';
     }else if(color === 'rgb(255, 255, 255)'){
-        return 'w';
+        return 'W';
     }else if(color === 'rgb(255, 165, 0)'){
-        return 'o';
+        return 'O';
     }else if(color === 'rgb(0, 128, 0)'){
-        return 'g';
+        return 'G';
     }else if(color === 'rgb(255, 0, 0)'){
-        return 'r';
+        return 'R';
     }else if(color === 'rgb(0, 0, 255)'){
-        return 'b';
+        return 'B';
     }else if(color === 'rgb(255, 255, 0)'){
-        return 'y';
+        return 'Y';
     }else{
         return 'hi';
     }
@@ -66,25 +68,28 @@ function colorConverter(color){
 for(let box of document.querySelectorAll('.textBox')){
     box.addEventListener('input', function (event) {
         let color = 'gray';
-        if(box.value === 'w'){
+        box.value = box.value.toUpperCase();
+        if(box.value === 'W'){
             color = 'white';
-        }else if(box.value === 'o'){
+        }else if(box.value === 'O'){
             color = 'orange';
-        }else if(box.value === 'g'){
+        }else if(box.value === 'G'){
             color = 'green';
-        }else if(box.value === 'r'){
+        }else if(box.value === 'R'){
             color = 'red';
-        }else if(box.value === 'b'){
+        }else if(box.value === 'B'){
             color = 'blue';
-        }else if(box.value === 'y'){
+        }else if(box.value === 'Y'){
             color = 'yellow';
         }
         document.getElementById('piece' + (multiplier * 9 + parseInt(box.getAttribute('id')))).style.backgroundColor = color;
-        box.blur();
-        if(box.id === '4'){
-            document.getElementById('6').focus();
-        }else {
-            document.getElementById(parseInt(box.id) + 1 + '').focus();
+        if(box.value != "") {
+            box.blur();
+            if (box.id === '4') {
+                document.getElementById('6').focus();
+            } else {
+                document.getElementById(parseInt(box.id) + 1 + '').focus();
+            }
         }
     });
 
@@ -166,13 +171,58 @@ const userAction = async () => {
             yellow += currentPiece.style.backgroundColor[0];
         }
     }
-  const response = await fetch(`https://e4d9ik0jg4.execute-api.us-west-2.amazonaws.com/test/cubesolver?white=${white}&orange=${orange}&green=${green}&red=${red}&blue=${blue}&yellow=${yellow}`);
-  const myJson = await response.json(); //extract JSON from the http response
+  let response = await fetch(`https://3nkzvyis50.execute-api.us-east-1.amazonaws.com/test2/cubesolver2?white=${white}&orange=${orange}&green=${green}&red=${red}&blue=${blue}&yellow=${yellow}`);
+  let myJson = await response.json(); //extract JSON from the http response
     if(myJson['error']){
-        outputField.innerText = myJson['error'];
+        alert(myJson['error']);
     }else {
-        outputField.innerText = myJson['cross'] + myJson['corners'] + myJson['second layer'] + myJson['last layer'];
+        let crossButton = document.getElementById("crossButton");
+        let flButton = document.getElementById("flButton");
+        let slButton = document.getElementById("slButton");
+        let llButton = document.getElementById("llButton");
+        if(!outputPresent) {
+            let tabs = document.getElementById("tabs");
+            tabs.style.visibility = "visible";
+            outputPresent = true;
+        }
+        crossButton.onclick = function () {
+                outputSection(crossButton, 'cross')
+            };
+        flButton.onclick = function () {
+                outputSection(flButton, 'first layer')
+            };
+        slButton.onclick = function () {
+                outputSection(slButton, 'second layer')
+            };
+        llButton.onclick = function () {
+                outputSection(llButton, 'last layer')
+            };
+        crossButton.click();
     }
+
+
+function outputSection(evt, sectionName) {
+  // Declare all variables
+  let i, tabcontent, tablinks;
+    let outputField = document.getElementById("outputField");
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tabLinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  evt.className += " active";
+
+  if(sectionName === "cross"){
+      outputField.innerText = myJson['cross'];
+  }else if(sectionName === "first layer"){
+      outputField.innerText = myJson['corners'];
+  }else if(sectionName === "second layer"){
+      outputField.innerText = myJson['second layer'];
+  }else if(sectionName === "last layer"){
+      outputField.innerText = myJson['last layer'];
+  }
+}
 }
 solveButton.addEventListener('click', userAction);
-
