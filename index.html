@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Rubik's Cube Solver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="index.html">Solver</a></li>
-        <li><a href="news.asp">Instructions</a></li>
-        <li><a href="contact.asp">How to</a></li>
-        <li><a href="about.asp">About</a></li>
+        <li><a href="#main">Home</a></li>
+        <li><a href="#instructions">Site Instructions</a></li>
+        <li><a href="https://cdn.shopify.com/s/files/1/0035/5205/1273/files/Beginner_s_Tutorial_Guide.pdf" target="_blank">How To Solve The Cube</a></li>
+        <li><a href="AboutPage.html">About</a></li>
     </ul>
-    <section class="main">
+    <section class="main" id="main">
         <section class="cube">
             <div class="whiteSide side">
                 <div class="piece" id="piece1"></div>
@@ -122,6 +125,44 @@
             </div>
             <p id="outputField"></p>
         </section>
+
+        <div class="mainText" id="instructions"><h1>How to use the site</h1>
+          <p>The site shows an unfolded Rubik’s Cube.<br>
+            The color of a side is determined by the color of the center sticker of that side.
+            Typing the first letter of the color of an individual sticker into the text box with the correct side selected will make the same color on the cube change color.
+            When entering the orange, green, red, and blue side, the white side should be on top. When entering the white side, the blue side should be on top.
+            When entering the yellow side, the green side should be on top.
+            When ready, press solve, and you will be presented with a step-by-step solution for how to solve your cube.
+            Pressing clear will clear the selected side from the cube.
+            When solving the cube, the cube should be held with the white side on the top and the green side on the front.
+        </p>
+            <h2>Rubik's cube notation</h2>
+        <p>L signifies the left side<br>
+            R is the right side<br>
+            U is the top side<br>
+            D is the bottom side<br>
+            B is the back side<br>
+            F is the front side<br>
+            A single apostrophe signifies a counterclockwise turn while no apostrophe signifies a clockwise turn when looking at the side. The number 2 following a side name
+            means you need to turn the side twice.
+        </p>
+            <h2>What to do if I get an error?</h2>
+            <p>Sometimes, if your cube was disassembled at any point, your cube might not have been put back together correctly, and this can cause your cube to be impossible to solve.
+
+        </p>
+            <h1>Error messages and how to fix them:</h1>
+            <h2>One of the edges of the cube has an odd orientation</h2>
+            <p>To fix this, remove one edge from the cube flip it and put it back in.</p>
+            <h2>One of the corners of the cube has an odd orientation</h2>
+            <p>To fix this, remove one of the corners twist it clockwise and put it back in. If this doesn't solve your issue
+            remove the same corner and twist it clockwise once more.</p>
+            <h2>Two pieces of the cube are swapped</h2>
+            <p>To fix this, remove the top left and top right edges, swap them, and put them back in the cube.</p>
+            <h2>Every side must have 9 colors</h2>
+            <p>To fix this, input the entire cube before pressing solve.</p>
+            <h2>One or more of the pieces does not exist</h2>
+            <p>To fix this, make sure that you input the cube correctly.</p>
+        </div>
     </section>
 <script src="cube.js"></script>
 </body>
