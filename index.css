@@ -193,7 +193,7 @@ p{
     .main{
         display: flex;
         flex-direction: column;
-        margin-top: 30px;
+        margin-top: 50px;
     }
     .cube{
         flex: 1;
